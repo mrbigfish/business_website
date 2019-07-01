@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "prettier.eslintIntegration": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveTimeout": 1000,
+    "eslint.run": "onSave"
+  }
+}
