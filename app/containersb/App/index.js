@@ -15,7 +15,7 @@ import Footer from 'components/Footer'
 
 import GlobalStyle from '../../global-styles'
 
-import home from '../HomePage'
+import HomePage from '../HomePage'
 import ReasoningRock from '../About/ReasoningRock'
 import ProjectManager from '../About/ProjectManager'
 import Questions from '../About/Questions'
@@ -66,7 +66,7 @@ export default function App() {
       </Helmet>
       <Nav>
         <Switch>
-          <Route exact path='/' component={home} />
+          <Route exact path='/' component={HomePage} />
           <Route path='/scalability' component={Scalability} />
           <Route path='/developmental' component={Developmental} />
           <Route path='/development_scalability' component={DevScalability} />

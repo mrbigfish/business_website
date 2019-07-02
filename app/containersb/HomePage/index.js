@@ -15,7 +15,7 @@ import imgA from '../../src/images/grannyhip.png'
 
 const AppWrapper = styled.section``
 
-const home = () => (
+const HomePage = () => (
   <AppWrapper>
     <Segment style={{ padding: '2em 0em' }} vertical>
       <Grid container verticalAlign='middle'>
@@ -189,4 +189,4 @@ const home = () => (
     </Segment>
   </AppWrapper>
 )
-export default home
+export default HomePage
