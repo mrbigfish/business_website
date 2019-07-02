@@ -11,6 +11,8 @@ import {
   Dropdown,
 } from 'semantic-ui-react'
 import { website, about, mobile } from './menuItems'
+import BackgroundImg from './BackgroundImg'
+import Banner from '../Header/cubes.jpg'
 
 /*
 TODO: Heads up! 
@@ -96,7 +98,7 @@ export default class DesktopContainer extends Component {
           once={false}
           onBottomPassed={this.showFixedMenu}
           onBottomPassedReverse={this.hideFixedMenu}
-        >
+        ><BackgroundImg imgObj={Banner} alt='banner - Logo'>
           <Segment
             textAlign='center'
             style={{ marginTop: '-1em', backgroundColor: 'transparent' }}
@@ -224,7 +226,7 @@ export default class DesktopContainer extends Component {
                 </Menu.Item>
               </Container>
             </Menu>
-          </Segment>
+          </Segment></BackgroundImg>
         </Visibility>
         {children}
       </Responsive>

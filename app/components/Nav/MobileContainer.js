@@ -216,7 +216,11 @@ export default class MobileContainer extends Component {
           <Segment
             inverted
             textAlign='center'
-            style={{ backgroundColor: 'transparent', marginTop: '-1em' }}
+            style={{
+              backgroundColor: 'transparent',
+              marginTop: '-1em',
+              minHeight: '150px',
+            }}
             vertical
           >
             <Container>

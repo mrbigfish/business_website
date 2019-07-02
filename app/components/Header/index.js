@@ -13,7 +13,6 @@ function Header() {
   return (
     <div>
       <BackgroundImg imgObj={Banner} alt='banner - Logo'>
-        <Nav>
           <NavBar>
             <HeaderLink to='/'>
               <FormattedMessage {...messages.home} />
@@ -22,7 +21,6 @@ function Header() {
               <FormattedMessage {...messages.features} />
             </HeaderLink>
           </NavBar>
-        </Nav>
       </BackgroundImg>
     </div>
   )
