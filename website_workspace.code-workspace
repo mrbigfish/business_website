@@ -2,24 +2,6 @@
   "folders": [
     {
       "path": "."
-    },
-    {
-      "path": "E:\\web_projects\\business_website\\app\\containers\\HomePage"
-    },
-    {
-      "path": "C:\\Users\\PsychoSympathetic\\Web_Dev\\React\\reasoning_rock\\src\\images"
-    },
-    {
-      "path": "C:\\Users\\PsychoSympathetic\\Web_Dev\\React\\reasoning_rock\\src\\reducers"
-    },
-    {
-      "path": "C:\\Users\\PsychoSympathetic\\Web_Dev\\React\\reasoning_rock\\src\\sagas"
-    },
-    {
-      "path": "C:\\Users\\PsychoSympathetic\\Web_Dev\\React\\reasoning_rock\\src\\store"
-    },
-    {
-      "path": "C:\\Users\\PsychoSympathetic\\Web_Dev\\React\\reasoning_rock\\src\\actions"
     }
   ],
   "settings": {

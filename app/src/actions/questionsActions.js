@@ -3,21 +3,21 @@ export function getQuestions(token, difficulty) {
     type: 'GET_QUESTIONS',
     token,
     difficulty,
-  };
+  }
 }
 
 export function questionsReceived(data) {
   return {
     type: 'QUESTIONS_RECEIVED',
     data,
-  };
+  }
 }
 
 export function questionsError(error) {
   return {
     type: 'QUESTIONS_ERROR',
     error,
-  };
+  }
 }
 
 export function answerCorrect(correct, result, score) {
@@ -33,7 +33,7 @@ export function answerWrong(wrong, result) {
   return {
     type: 'ANSWER_WRONG',
     wrong,
-    result
+    result,
   }
 }
 
@@ -43,7 +43,7 @@ export function updateCount(count, result, answerClicked) {
     count,
     result,
     answerClicked,
-  };
+  }
 }
 
 export function startGame(isPlaying) {
@@ -67,7 +67,15 @@ export function resetCount(count) {
   }
 }
 
-export function resetGame(count, result, difficulty, isPlaying, wrong, correct, score) {
+export function resetGame(
+  count,
+  result,
+  difficulty,
+  isPlaying,
+  wrong,
+  correct,
+  score,
+) {
   return {
     type: 'RESET_GAME',
     count,
@@ -79,6 +87,3 @@ export function resetGame(count, result, difficulty, isPlaying, wrong, correct, 
     score,
   }
 }
-
-
-

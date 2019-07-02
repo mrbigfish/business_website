@@ -9,14 +9,24 @@ const initialState = {
 const token = (state = initialState, action) => {
   switch (action.type) {
     case 'GET_TOKEN':
-         return { ...state, loading: true, error: false };
+      return { ...state, loading: true, error: false }
     case 'TOKEN_RECEIVED':
-         return { ...state, data: action.data, loading: false, token: action.data.token }
+      return {
+        ...state,
+        data: action.data,
+        loading: false,
+        token: action.data.token,
+      }
     case 'TOKEN_ERROR':
-          return { ...state, loading: false, error: true, errormessage: action.data.response }
-    default: 
-         return state;
-    }
- };
- 
- export default token;
+      return {
+        ...state,
+        loading: false,
+        error: true,
+        errormessage: action.data.response,
+      }
+    default:
+      return state
+  }
+}
+
+export default token

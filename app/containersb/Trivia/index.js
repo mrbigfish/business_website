@@ -1,15 +1,15 @@
 /**
- * 
+ *
  * This is the main hook for the Application...
- * 
+ *
  * NOTE: ALL Applications (minus the optional right bar) will stem
  * from this index.js file
- * 
+ *
  */
-import React from 'react';
-import styled from 'styled-components';
-import GetToken from './GetToken';
-import PlayGame from './PlayGame';
+import React from 'react'
+import styled from 'styled-components'
+import GetToken from './GetToken'
+import PlayGame from './PlayGame'
 
 const AppWrapper = styled.section`
   background-color: #f8f8ff;
@@ -19,10 +19,10 @@ const AppWrapper = styled.section`
 `
 
 const Trivia = () => (
-    <AppWrapper>
-        <GetToken />
-        <PlayGame />
-    </AppWrapper>
+  <AppWrapper>
+    <GetToken />
+    <PlayGame />
+  </AppWrapper>
 )
 
-export default Trivia;
+export default Trivia
