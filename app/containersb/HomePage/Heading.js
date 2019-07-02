@@ -1,13 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
-import {
-  Button,
-  Header,
-  Icon,
-  Container,
-} from 'semantic-ui-react'
-import img from '../../images/stonehenge.jpg'
+import { Button, Header, Icon, Container } from 'semantic-ui-react'
+import img from '../../src/images/stonehenge.jpg'
 
 // Heads up!
 // We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
@@ -42,7 +37,9 @@ const HomepageHeading = ({ mobile }) => (
           fontSize: mobile ? '2em' : '4em',
           fontWeight: 'normal',
           margin: mobile ? '15%' : '0em 0em 1em 0.7em',
-          font: mobile ? 'bold 12px/24px Times New Roman, serif' : 'bold 52px/90px Times New Roman, serif',
+          font: mobile
+            ? 'bold 12px/24px Times New Roman, serif'
+            : 'bold 52px/90px Times New Roman, serif',
         }}
       />
       <Header
@@ -53,26 +50,27 @@ const HomepageHeading = ({ mobile }) => (
           fontSize: mobile ? '1.5em' : '1.7em',
           fontWeight: 'normal',
           margin: mobile ? '6.5em' : '-2.4em 0em 6em 2.9em',
-          font: mobile ? 'italic 12px/24px Times New Roman, serif' : 'italic 32px/60px Times New Roman, serif',
+          font: mobile
+            ? 'italic 12px/24px Times New Roman, serif'
+            : 'italic 32px/60px Times New Roman, serif',
         }}
       />
-            
-      <Container textAlign='center' >
+
+      <Container textAlign='center'>
         <Header
           color='grey'
           as='h1'
           style={{ margin: '1em 0em -0.2em 18em', paddingTop: '-1em' }}
           content='Make Your Company Happen!'
-        >Make Your Company Happen!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <Button 
-            color='orange'
-            size='large'
-            style={{ margin: '1% 0 2% 0' }}
-          >
-              Contact Us
+        >
+          Make Your Company Happen!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <Button color='orange' size='large' style={{ margin: '1% 0 2% 0' }}>
+            Contact Us
             <Icon name='right arrow' />
-          </Button></Header>
-      </Container></ImageWrapper>
+          </Button>
+        </Header>
+      </Container>
+    </ImageWrapper>
   </Container>
 )
 
