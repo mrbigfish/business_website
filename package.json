@@ -4,13 +4,13 @@
   "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
   "repository": {
     "type": "git",
-    "url": "git://github.com/react-boilerplate/react-boilerplate.git"
+    "url": "git://github.com/mrbigfish/react-boilerplate.git"
   },
   "engines": {
     "npm": ">=5",
     "node": ">=8.15.1"
   },
-  "author": "Max Stoiber",
+  "author": "Brian Turner",
   "license": "MIT",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
@@ -92,6 +92,7 @@
     "redux-saga": "1.0.2",
     "reselect": "4.0.0",
     "sanitize.css": "8.0.0",
+    "semantic-ui-react": "^0.87.2",
     "styled-components": "4.2.0"
   },
   "devDependencies": {
