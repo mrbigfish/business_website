@@ -13,15 +13,16 @@ function Header() {
   return (
     <div>
       <BackgroundImg imgObj={Banner} alt='banner - Logo'>
-        <Nav />
-        <NavBar>
-          <HeaderLink to='/'>
-            <FormattedMessage {...messages.home} />
-          </HeaderLink>
-          <HeaderLink to='/features'>
-            <FormattedMessage {...messages.features} />
-          </HeaderLink>
-        </NavBar>
+        <Nav>
+          <NavBar>
+            <HeaderLink to='/'>
+              <FormattedMessage {...messages.home} />
+            </HeaderLink>
+            <HeaderLink to='/features'>
+              <FormattedMessage {...messages.features} />
+            </HeaderLink>
+          </NavBar>
+        </Nav>
       </BackgroundImg>
     </div>
   )

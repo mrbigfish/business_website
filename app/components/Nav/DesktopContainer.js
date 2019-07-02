@@ -99,7 +99,7 @@ export default class DesktopContainer extends Component {
         >
           <Segment
             textAlign='center'
-            style={{ padding: '0.5em 0em', backgroundColor: 'transparent' }}
+            style={{ marginTop: '-1em', backgroundColor: 'transparent' }}
             vertical
           >
             <Menu
@@ -113,8 +113,6 @@ export default class DesktopContainer extends Component {
                 <Menu.Item
                   name='home'
                   active={value === 0}
-                  color='orange'
-                  inverted
                   onClick={this.handleChange}
                   as={Link}
                   to='/'
@@ -175,7 +173,7 @@ export default class DesktopContainer extends Component {
                   </Dropdown>
                 </Menu.Item>
                 <Menu.Item
-                  color='blue'
+                  color=''
                   onClick={this.handleItemClick}
                   active={value >= 101 && value <= 149}
                 >
@@ -191,12 +189,12 @@ export default class DesktopContainer extends Component {
                   name='apps'
                   as={Link}
                   to='/apps'
-                  color='blue'
+                  color=''
                   active={value === 100}
                   onClick={this.handleChange}
                   value={100}
                 />
-                <Menu.Item color='blue' active={value >= 151 && value <= 199}>
+                <Menu.Item color='' active={value >= 151 && value <= 199}>
                   <Dropdown
                     text='About'
                     simple
@@ -209,7 +207,7 @@ export default class DesktopContainer extends Component {
                   name='contact'
                   as={Link}
                   to='/contact'
-                  color='blue'
+                  color=''
                   active={value === 150}
                   onClick={this.handleChange}
                   value={150}
@@ -218,7 +216,7 @@ export default class DesktopContainer extends Component {
                   <Button
                     as='a'
                     inverted={!fixed}
-                    color={fixed ? 'orange' : ''}
+                    color='orange'
                     style={{ marginLeft: '0.5em' }}
                   >
                     Contact Us

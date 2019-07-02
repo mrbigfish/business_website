@@ -6,6 +6,6 @@ const BackgroundImg = styled.div`
   background-size: cover;
   min-height: 200px;
   margin: auto;
-`;
+`
 
 export default BackgroundImg;

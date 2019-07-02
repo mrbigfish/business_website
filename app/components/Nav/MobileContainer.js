@@ -101,10 +101,11 @@ export default class MobileContainer extends Component {
         <Sidebar
           as={Menu}
           animation='push'
-          inverted
+          style={{ backgroundColor: 'transparent' }}
           onHide={this.handleSidebarHide}
           vertical
           visible={sidebarOpened}
+          inverted
         >
           <Menu.Item
             name='home'
@@ -215,7 +216,7 @@ export default class MobileContainer extends Component {
           <Segment
             inverted
             textAlign='center'
-            style={{ backgroundColor: '#000000', marginTop: '-1em' }}
+            style={{ backgroundColor: 'transparent', marginTop: '-1em' }}
             vertical
           >
             <Container>
@@ -224,8 +225,13 @@ export default class MobileContainer extends Component {
                   <Icon name='sidebar' />
                 </Menu.Item>
                 <Menu.Item position='right'>
-                  <Button as='a' inverted style={{ marginLeft: '0.5em' }}>
-                    Contact Us
+                  <Button
+                    as='a'
+                    size='small'
+                    inverted
+                    style={{ marginLeft: '0.5em' }}
+                  >
+                    Contact
                   </Button>
                 </Menu.Item>
               </Menu>
