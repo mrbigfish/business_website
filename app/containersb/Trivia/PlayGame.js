@@ -1,25 +1,33 @@
 /**
- * 
+ *
  * This will get the Token for the user
  */
-import React from 'react';
-import { connect } from 'react-redux';
-import { Button, Icon, Segment, Grid, Header } from 'semantic-ui-react';
-import { push } from 'connected-react-router';
-import styled from 'styled-components';
-import { 
-  getQuestions, 
-  updateCount, 
-  updateDifficulty, 
-  startGame, 
-  resetGame 
-} from '../../src/actions/questionsActions';
-import ShowQuestions from './ShowQuestions';
-import GameIntro from './GameIntro';
-import QuestionResult from './QuestionResult';
-import ScoreBoard from './ScoreBoard';
-import QuestionInfo from './QuestionInfo';
-import NextSection from './NextSection';
+import React from 'react'
+import { connect } from 'react-redux'
+import { Button, Icon, Segment, Grid, Header } from 'semantic-ui-react'
+import { push } from 'connected-react-router'
+import styled from 'styled-components'
+import { endGame } from 'containers/LocalApps/actions'
+import {
+  getQuestions,
+  updateCount,
+  updateDifficulty,
+  resetGame,
+} from '../../containers/TriviaApp/actions'
+/*
+import {
+  getQuestions,
+  updateCount,
+  updateDifficulty,
+  startGame,
+  resetGame,
+} from '../../containers/TriviaApp/actions' */
+import ShowQuestions from './ShowQuestions'
+import GameIntro from './GameIntro'
+import QuestionResult from './QuestionResult'
+import ScoreBoard from './ScoreBoard'
+import QuestionInfo from './QuestionInfo'
+import NextSection from './NextSection'
 
 const AppWrapper = styled.section`
   display: inline-flex;
@@ -28,27 +36,27 @@ const AppWrapper = styled.section`
   margin: 4%;
 `
 
-const getQuestion = ({ 
-  tokeninfo, 
-  questionsinfo,
+const getQuestion = ({
+  trivia,
   onClickQ,
   onNextQuestion,
   onNextSection,
   onRestart,
   quitGame,
+  isPlaying,
 }) => {
-
-  if(tokeninfo.data.token) {
-    if(!questionsinfo.isPlaying) {
+  if (isPlaying) {
+    if (!trivia.questions) {
       return (
         <AppWrapper>
           <Segment raised textAlign='center' padded='very'>
             <GameIntro />
             <Segment basic padded>
-              <Button icon 
-                labelPosition='right' 
-                onClick={onClickQ} 
-                color="green"
+              <Button
+                icon
+                labelPosition='right'
+                onClick={onClickQ}
+                color='green'
               >
                 PLAY
                 <Icon name='right arrow' />
@@ -56,100 +64,104 @@ const getQuestion = ({
             </Segment>
           </Segment>
         </AppWrapper>
-        )
-      } 
-      else if(!questionsinfo.data.response_code && questionsinfo.isPlaying) {
-        if(questionsinfo.count < 5) {
-          return (
-            <Grid columns={2} centered>
-              <Grid.Row>
-                <Grid.Column>
-                    <ScoreBoard 
-                      correct={questionsinfo.correct}
-                      wrong={questionsinfo.wrong}
-                      score={questionsinfo.score}
-                    />
-                </Grid.Column>
-                <Grid.Column>
-                    <QuestionInfo 
-                      difficulty={questionsinfo.difficulty}
-                      category={questionsinfo.data.results[questionsinfo.count].category}
-                    />
-                </Grid.Column>
-              </Grid.Row>
-                <Grid.Row>
-                  <Grid.Column>
-                    <ShowQuestions
-                      question={questionsinfo.data.results[questionsinfo.count].question}
-                      answer={questionsinfo.data.results[questionsinfo.count].correct_answer}
-                      incorrect={questionsinfo.data.results[questionsinfo.count].incorrect_answers}
-                      count={questionsinfo.count}
-                      answerClicked={questionsinfo.answerClicked}
-                      loading={questionsinfo.loading}
-                    />
-                  </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
-                  <Grid.Column>
-                    <QuestionResult 
-                      answer={questionsinfo.data.results[questionsinfo.count].correct_answer} 
-                      result={questionsinfo.result}
-                      count={questionsinfo.count}
-                      onNextQuestion={onNextQuestion}
-                    />
-                  </Grid.Column>
-                </Grid.Row>  
-            </Grid>
-          ) 
-        } else if(questionsinfo.count === 5) {
-          // Game Over
-          if (questionsinfo.difficulty === 'hard' && !questionsinfo.loading) {
-            let content = null;
-            if(questionsinfo.score >= 500) content=<Header as='h3'>WOW, GREAT GAME!</Header>;
-            else content=<Header as='h3'>GOOD GAME!</Header>;
-            return (
-                <Segment raised textAlign='center' padded='very' centered='true'>
-                  <Segment basic padded>
-                    <ScoreBoard 
-                      correct={questionsinfo.correct}
-                      wrong={questionsinfo.wrong}
-                      score={questionsinfo.score}
-                    />
-                  <Segment basic color='violet' >
-                    {content}
-                  </Segment>
-                  </Segment>
-                  <Segment basic padded>
-                    <Header as='h2' color='violet'>GAME OVER</Header>
-                  </Segment>
-                  <Segment basic padded>
-                    <Button onClick={onRestart} color="green">
-                        PLAY AGAIN?
-                    </Button>
-                    <Button onClick={quitGame} color="green">
-                        QUIT
-                    </Button>
-                  </Segment>
-                </Segment>
-            )
-          } else if (questionsinfo.difficulty !== 'hard') {
-            return (
-              <AppWrapper>
-                <NextSection
-                  onNextSection={onNextSection}
+      )
+    }
+    if (trivia.questions) {
+      if (trivia.count < 5) {
+        return (
+          <Grid columns={2} centered>
+            <Grid.Row>
+              <Grid.Column>
+                <ScoreBoard
+                  correct={trivia.correct}
+                  wrong={trivia.wrong}
+                  score={trivia.score}
                 />
-              </AppWrapper>
-            )
-          }
-        }  
+              </Grid.Column>
+              <Grid.Column>
+                <QuestionInfo
+                  difficulty={trivia.difficulty}
+                  category={trivia.questions.results[trivia.count].category}
+                />
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column>
+                <ShowQuestions
+                  question={trivia.questions.results[trivia.count].question}
+                  answer={trivia.questions.results[trivia.count].correct_answer}
+                  incorrect={
+                    trivia.questions.results[trivia.count].incorrect_answers
+                  }
+                  count={trivia.count}
+                  answerClicked={trivia.answerClicked}
+                  loading={trivia.loading}
+                />
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column>
+                <QuestionResult
+                  answer={trivia.questions.results[trivia.count].correct_answer}
+                  result={trivia.result}
+                  count={trivia.count}
+                  onNextQuestion={onNextQuestion}
+                />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        )
       }
-    } else return <h4>(Developer Comment: Need Token)</h4>;
-  return <h3>(Developer Comment: Logic Issue Received!)</h3>;
+      if (trivia.count === 5) {
+        // Game Over
+        if (trivia.difficulty === 'hard' && !trivia.loading) {
+          let content = null
+          if (trivia.score >= 500)
+            content = <Header as='h3'>WOW, GREAT GAME!</Header>
+          else content = <Header as='h3'>GOOD GAME!</Header>
+          return (
+            <Segment raised textAlign='center' padded='very' centered='true'>
+              <Segment basic padded>
+                <ScoreBoard
+                  correct={trivia.correct}
+                  wrong={trivia.wrong}
+                  score={trivia.score}
+                />
+                <Segment basic color='violet'>
+                  {content}
+                </Segment>
+              </Segment>
+              <Segment basic padded>
+                <Header as='h2' color='violet'>
+                  GAME OVER
+                </Header>
+              </Segment>
+              <Segment basic padded>
+                <Button onClick={onRestart} color='green'>
+                  PLAY AGAIN?
+                </Button>
+                <Button onClick={quitGame} color='green'>
+                  QUIT
+                </Button>
+              </Segment>
+            </Segment>
+          )
+        }
+        if (trivia.difficulty !== 'hard') {
+          return (
+            <AppWrapper>
+              <NextSection onNextSection={onNextSection} />
+            </AppWrapper>
+          )
+        }
+      }
+    }
+  }
+  return <h4> </h4>
 }
 
-const mapStateToProps = (state) => ({
-  tokeninfo: state.tokeninfo,
-  questionsinfo: state.questionsinfo,
+const mapStateToProps = state => ({
+  trivia: state.trivia,
   onClickQ: state.onClickQ,
   onNextQuestion: state.onNextQuestion,
   correct: state.correct,
@@ -159,35 +171,38 @@ const mapStateToProps = (state) => ({
   onNextSection: state.onNextSection,
   onRestart: state.onRestart,
   onDifficultyUpdate: state.onDifficultyUpdate,
-});
+})
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   onClickQ: () => {
-    dispatch(getQuestions());
-    dispatch(startGame());
+    dispatch(getQuestions())
   },
   onNextQuestion: () => dispatch(updateCount()),
   onNextSection: () => {
-    dispatch(updateDifficulty());
-    dispatch(getQuestions());
+    dispatch(updateDifficulty())
+    dispatch(getQuestions())
   },
   getNextQuestions: () => dispatch(getQuestions()),
   onRestart: () => dispatch(resetGame()),
   onDifficultyUpdate: () => dispatch(updateDifficulty()),
   quitGame: () => {
-    dispatch(resetGame());
-    dispatch(push('/apps'));
+    dispatch(resetGame())
+    dispatch(endGame())
+    dispatch(push('/apps'))
   },
-});
+})
 
-const PlayGame = connect(mapStateToProps, mapDispatchToProps)(getQuestion);
+const PlayGame = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(getQuestion)
 
-export default PlayGame;
+export default PlayGame
 
 /**
- *             <h2>{questionsinfo.results[questionsinfo.count].question}</h2>
-            <h3>{questionsinfo.results[questionsinfo.count].correct_answer}</h3>
-            <h3>{questionsinfo.results[questionsinfo.count].incorrect_answers}</h3>
+ *             <h2>{trivia.results[trivia.count].question}</h2>
+            <h3>{trivia.results[trivia.count].correct_answer}</h3>
+            <h3>{trivia.results[trivia.count].incorrect_answers}</h3>
  * 
  * 
  */

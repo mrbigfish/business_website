@@ -8,5 +8,5 @@
   "endOfLine": "auto",
   "quoteProps": "as-needed",
   "jsxSingleQuote": true,
-  "bracketSpacing:": true
+  "bracketSpacing": true
 }

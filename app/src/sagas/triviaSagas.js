@@ -25,11 +25,11 @@ export function* getTokenSaga() {
  * GET QUESTION SAGA
  */
 function* getQuestions() {
-  const session_token = state => state.tokeninfo.data.token
+  const sessionToken = state => state.tokeninfo.data.token
   // const session_token = mydata.questionsinfo.difficulty;
-  const section_difficulty = state => state.questionsinfo.difficulty
-  const token = yield select(session_token)
-  const difficulty = yield select(section_difficulty)
+  const sectionDifficulty = state => state.questionsinfo.difficulty
+  const token = yield select(sessionToken)
+  const difficulty = yield select(sectionDifficulty)
 
   const url = `https://opentdb.com/api.php?amount=5&encode=base64&difficulty=${difficulty}&token=${token}&type=multiple`
 

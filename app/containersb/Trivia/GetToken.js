@@ -2,11 +2,20 @@
  *
  * This will get the Token for the user
  */
-import React from 'react'
+import React, { memo } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Button, Icon, Segment } from 'semantic-ui-react'
 import styled from 'styled-components'
-import { getToken } from '../../src/actions/tokenActions'
+import { compose } from 'redux'
+
+// import { useInjectReducer } from 'utils/injectReducer'
+// import { useInjectSaga } from 'utils/injectSaga'
+
+import { getToken } from '../../containers/LocalApps/actions'
+// import reducer from '../../containers/TriviaApp/reducer'
+// import saga from '../../containers/TriviaApp/saga'
+
 import Welcome from './Welcome'
 
 const AppWrapper = styled.section`
@@ -16,8 +25,8 @@ const AppWrapper = styled.section`
   margin: 4%;
 `
 
-const haveToken = ({ tokeninfo, onClickNext }) => {
-  if (!tokeninfo.data) {
+const GetToken = ({ isPlaying, onClickNext }) => {
+  if (!isPlaying) {
     return (
       <AppWrapper>
         <Segment raised textAlign='center' padded='very'>
@@ -40,17 +49,27 @@ const haveToken = ({ tokeninfo, onClickNext }) => {
   return null
 }
 
+GetToken.propTypes = {
+  onClickNext: PropTypes.func,
+  // loading: PropTypes.bool,
+  // error: PropTypes.any,
+  isPlaying: PropTypes.bool,
+}
+
 const mapStateToProps = state => ({
-  tokeninfo: state.tokeninfo,
+  token: state.data,
 })
 
 const mapDispatchToProps = dispatch => ({
   onClickNext: evt => dispatch(getToken()),
 })
 
-const GetToken = connect(
+const withConnect = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(haveToken)
+)
 
-export default GetToken
+export default compose(
+  withConnect,
+  memo,
+)(GetToken)

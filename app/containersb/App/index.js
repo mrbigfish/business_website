@@ -20,7 +20,7 @@ import ReasoningRock from '../About/ReasoningRock'
 import ProjectManager from '../About/ProjectManager'
 import Questions from '../About/Questions'
 import GivingBack from '../About/GivingBack'
-import Apps from '../Apps'
+import LocalApps from '../../containers/LocalApps'
 import RefErr from '../RefErr'
 import ContactMe from '../ContactMe'
 import WebFixedEx from '../WebPages/WebFixedEx'
@@ -89,7 +89,7 @@ export default function App() {
           <Route path='/i18n' component={i18n} />
           <Route path='/branding' component={Branding} />
           <Route path='/expectations' component={Expectations} />
-          <Route path='/apps' component={Apps} />
+          <Route path='/apps' component={LocalApps} />
           <Route path='/mobile_development' component={MobileDev} />
           <Route path='/mobile_apps' component={MobileApps} />
           <Route path='/contact' component={ContactMe} />
