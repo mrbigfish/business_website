@@ -183,7 +183,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getQuestions())
   },
   getNextQuestions: () => dispatch(getQuestions()),
-  onRestart: () => dispatch(resetGame()),
+  onRestart: () => {
+    dispatch(resetGame())
+    dispatch(getQuestions())
+  },
   onDifficultyUpdate: () => dispatch(updateDifficulty()),
   quitGame: () => {
     dispatch(resetGame())

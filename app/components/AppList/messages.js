@@ -11,6 +11,6 @@ export const scope = 'app.components.AppList'
 export default defineMessages({
   header: {
     id: `${scope}.header`,
-    defaultMessage: 'This is the AppList component!',
+    defaultMessage: ' ',
   },
 })
